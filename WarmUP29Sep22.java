@@ -67,18 +67,31 @@ public class WarmUP29Sep22 {
         }
 
         // Display the array of file lines.
-        System.out.println("\n The array looks like this..\n");
-        for (int i=0; i<lineCount; i++){
+        System.out.println("\n----The array looks like this----\n");
+        for (int i = 0; i < lineCount; i += 2) {
             System.out.println(linesInAnimalNameFile[i]);
         }
 
         // Parse the array!
-        String str = "Shenzi-Banzai-Ed-Zig-Bud-Lou-Kamari-Wema-Nne-Madoa-Prince Nevarah";
-        String arrOfStr[] = str.split("-");
+        String aLine = "";
+        aLine = linesInAnimalNameFile[2];
+        System.out.println("\n aLine = " + aLine);
 
-        System.out.println("\n----Max 3----");
-        arrOfStr = str.split("-", 3);
-        for (String a : arrOfStr)
-            System.out.println(a);
+        // Use split to parse the line.
+        String[] theHyenas;
+        theHyenas = aLine.split(",");
+        // Output the elements of theWords[]
+        for (int i = 0; i < theHyenas.length; i++) {
+            System.out.println("theHyenas[" + i + "] = " + theHyenas[i]);
+        }
+
+        // Start from the beginning of the array and find the line containing hyena names.
+
+        for (int i = 0; i < lineCount; i++) {
+            if ("Hyena Names:".equals(linesInAnimalNameFile[i])) {
+                System.out.println("Match found at line: " + i + " !!");
+            }
+
+        }
     }
 }
