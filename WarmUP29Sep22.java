@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,10 +23,15 @@ public class WarmUP29Sep22 {
         //   https://www.geeksforgeeks.org/searching-for-characters-and-substring-in-a-string-in-java/
 
         // Open a file and read it line by line.
-        int lineCount = 0;
+        int lineCount = 1;
         try {
-            File file = new File("C:/javaMidTermFiles/animalNames.txt");
-            Scanner scanner = new Scanner(file);
+            File myObj = new File("C:/javaMidTermFiles/animalNames.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+            Scanner scanner = new Scanner(myObj);
             lineCount = 1;
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
@@ -33,7 +39,7 @@ public class WarmUP29Sep22 {
                 lineCount++;
             }
             scanner.close();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -55,7 +61,7 @@ public class WarmUP29Sep22 {
             }
             // Close the file.
             scanner.close();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -67,10 +73,12 @@ public class WarmUP29Sep22 {
         }
 
         // Parse the array!
-        String aLine = "";
-        aLine = linesInAnimalNameFile[2];
-        System.out.println("\n aLine = " + aLine);
+        String str = "Shenzi-Banzai-Ed-Zig-Bud-Lou-Kamari-Wema-Nne-Madoa-Prince Nevarah";
+        String arrOfStr[] = str.split("-");
 
-
+        System.out.println("\n----Max 3----");
+        arrOfStr = str.split("-", 3);
+        for (String a : arrOfStr)
+            System.out.println(a);
     }
 }
